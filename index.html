@@ -71,6 +71,49 @@
             margin-top: 20px;
         }
     </style>
+    <style>
+    /* Existing styles remain unchanged */
+    
+    @media (max-width: 768px) {
+        .menu {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            background-color: #0056b3;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.5s ease-out;
+        }
+        .menu a {
+            text-align: center;
+            padding: 10px;
+            display: block;
+        }
+        .menu-toggle {
+            display: block;
+        }
+        .menu.show {
+            display: flex;
+            max-height: 500px; /* Adjust to fit menu size */
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const menu = document.querySelector(".menu");
+
+        menuToggle.addEventListener("click", function () {
+            menu.classList.toggle("show");
+        });
+    });
+</script>
+
 </head>
 <body>
     <header>
