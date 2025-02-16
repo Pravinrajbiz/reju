@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Support Services</title>
+    <title>UniConnect</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -28,10 +28,7 @@
             justify-content: center;
             background-color: #0056b3;
             padding: 10px;
-            position: fixed;
-            width: 100%;
-            top: 60px;
-            z-index: 999;
+            margin-top: 60px;
         }
         .menu a {
             color: white;
@@ -42,7 +39,7 @@
         .container {
             max-width: 1200px;
             margin: auto;
-            padding: 120px 20px 20px;
+            padding: 80px 20px 20px;
             background: white;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -73,51 +70,13 @@
             color: white;
             margin-top: 20px;
         }
-        @media screen and (max-width: 768px) {
-            .menu {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                background-color: #0056b3;
-                width: 100%;
-                top: 60px;
-                left: 0;
-            }
-            .menu a {
-                text-align: center;
-                padding: 10px;
-                display: block;
-            }
-            .menu-toggle {
-                display: block;
-                background: none;
-                border: none;
-                color: white;
-                font-size: 20px;
-                cursor: pointer;
-                position: absolute;
-                top: 15px;
-                right: 20px;
-            }
-        }
     </style>
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById("menu");
-            if (menu.style.display === "flex") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "flex";
-            }
-        }
-    </script>
 </head>
 <body>
     <header>
         <h1>Student Support Services</h1>
-        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     </header>
-    <nav id="menu" class="menu">
+    <nav class="menu">
         <a href="#education">Education</a>
         <a href="#housing">Housing</a>
         <a href="#finance">Finance</a>
@@ -152,6 +111,69 @@
             <ul>
                 <li><strong>Scholarships:</strong> Apply for grants and tuition aid.</li>
                 <li><strong>Part-Time Jobs:</strong> Find student-friendly job opportunities.</li>
+            </ul>
+        </div>
+        <div id="health" class="section">
+            <h2>Health & Wellness</h2>
+            <ul>
+                <li><strong>University Clinics:</strong> Access basic healthcare services.</li>
+                <li><strong>Mental Health Support:</strong> Counseling and therapy options.</li>
+            </ul>
+        </div>
+        <div id="transport" class="section">
+            <h2>Transportation</h2>
+            <ul>
+                <li><strong>Public Transport:</strong> Information on buses, trains, and metro routes.</li>
+                <li><strong>Ride-Hailing Services:</strong> Find taxis and carpool options for easy travel.</li>
+            </ul>
+        </div>
+        <div id="connectivity" class="section">
+            <h2>Communication & Connectivity</h2>
+            <ul>
+                <li><strong>Local SIM Cards:</strong> Get a mobile number for local communication.</li>
+                <li><strong>Internet Services:</strong> Find the best internet plans for students.</li>
+            </ul>
+        </div>
+        <div id="culture" class="section">
+            <h2>Cultural Integration</h2>
+            <ul>
+                <li><strong>Orientation Programs:</strong> Learn about campus life and local culture.</li>
+                <li><strong>Student Organizations:</strong> Join clubs and make new friends.</li>
+            </ul>
+        </div>
+        <div id="legal" class="section">
+            <h2>Legal Support</h2>
+            <ul>
+                <li><strong>Visa Assistance:</strong> Help with student visa applications and renewals.</li>
+                <li><strong>Local Registration:</strong> Guidance on required legal registrations.</li>
+            </ul>
+        </div>
+        <div id="food" class="section">
+            <h2>Food & Necessities</h2>
+            <ul>
+                <li><strong>Cafeterias & Markets:</strong> Find places to eat on and near campus.</li>
+                <li><strong>Grocery Services:</strong> Get fresh food and essentials delivered.</li>
+            </ul>
+        </div>
+        <div id="safety" class="section">
+            <h2>Safety & Security</h2>
+            <ul>
+                <li><strong>Emergency Contacts:</strong> Quick access to police and medical help.</li>
+                <li><strong>Campus Security:</strong> Stay safe with university security measures.</li>
+            </ul>
+        </div>
+        <div id="tech" class="section">
+            <h2>Technology Support</h2>
+            <ul>
+                <li><strong>IT Help Desk:</strong> Assistance with student accounts, emails, and software.</li>
+                <li><strong>Online Learning:</strong> Support for virtual classes and digital tools.</li>
+            </ul>
+        </div>
+        <div id="travel" class="section">
+            <h2>Travel Assistance</h2>
+            <ul>
+                <li><strong>Student Discounts:</strong> Special offers on flights and transportation.</li>
+                <li><strong>Travel Guidance:</strong> Information on visas, tickets, and accommodations.</li>
             </ul>
         </div>
     </div>
