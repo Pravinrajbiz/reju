@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CITA AI-Powered Creative Courses</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e3a8a, #2dd4bf);
+            color: #2c2c2c;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            overflow-x: auto;
+        }
+        h1 {
+            color: #ffffff;
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            animation: fadeIn 1.5s ease-in-out;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .filter-container {
+            margin: 20px auto;
+        }
+        .filter-select {
+            padding: 10px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            background: #1e3a8a;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .schedule-table {
+            width: 90%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background: linear-gradient(135deg, #1e40af, #22d3ee);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            display: none;
+        }
+        .schedule-table.active {
+            display: table;
+        }
+        .schedule-table:hover {
+            transform: scale(1.02);
+        }
+        .schedule-table th, .schedule-table td {
+            padding: 18px;
+            text-align: left;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+            color: #ffffff;
+        }
+        .schedule-table th {
+            background-color: #1e3a8a;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            animation: slideIn 1s ease-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+        .schedule-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .schedule-table tr:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.01);
+        }
+        .schedule-table td:first-child {
+            font-weight: bold;
+            color: #f87171;
+            font-size: 1.1em;
+        }
+        .optional {
+            color: #facc15;
+            font-style: italic;
+            font-weight: 500;
+        }
+        .reward {
+            color: #34d399;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .you-are-now {
+            color: #ffffff;
+            font-size: 1em;
+            font-style: italic;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+        a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #f472b6;
+            text-decoration: underline;
+        }
+        .enroll-btn {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: #1e3a8a;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .anti-scam-badge {
+            margin: 20px auto;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            .schedule-table {
+                width: 100%;
+                font-size: 0.85em;
+            }
+            .schedule-table th, .schedule-table td {
+                padding: 12px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>CITA AI-Powered Creative Courses</h1>
+    <div class="anti-scam-badge">
+        <img src="cita_anti_scam_badge.png" alt="CITA Anti-Scam Commitment" width="100">
+        <p>Accredited by NSDC & ISO 9001:2015</p>
+    </div>
+    <div class="filter-container">
+        <select class="filter-select" onchange="filterSyllabus(this.value)">
+            <option value="graphic">AI-Powered Graphic Designing Mastery</option>
+            <option value="uiux">AI-Powered UI/UX Mastery</option>
+            <option value="video">AI-Powered Video Editing Mastery</option>
+            <option value="motion">AI-Powered Motion Graphics Mastery</option>
+        </select>
+    </div>
+    <div class="enroll-btn" onclick="showPopup()">Enroll Now</div>
+
+    <!-- Graphic Designing Syllabus -->
+    <table id="graphic" class="schedule-table active">
+        <tr>
+            <th>Week</th>
+            <th>Identity</th>
+            <th>CITA Certificate</th>
+            <th>Focus Area</th>
+            <th>Reward</th>
+            <th>You Are Now</th>
+            <th>Optional Certification & Link</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>AI Graphic Starter</td>
+            <td>CITA AI Graphic Basics Certificate</td>
+            <td>Create social media graphics with Canva AI and Freepik AI (free)</td>
+            <td class="reward">₹1,500</td>
+            <td class="you-are-now">A beginner designer with AI visuals!</td>
+            <td class="optional">Coursera Graphic Design Basics - <a href="https://www.coursera.org/learn/fundamentals-of-graphic-design">Coursera</a></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>AI Image Editor</td>
+            <td>CITA AI Photoshop Certificate</td>
+            <td>Edit images with Photoshop and Firefly AI (lab access)</td>
+            <td class="reward">₹2,500</td>
+            <td class="you-are-now">A skilled editor for marketing assets!</td>
+            <td class="optional">Udemy Photoshop Masterclass - <a href="https://www.udemy.com/course/adobe-photoshop-cc-essentials-training-course/">Udemy</a></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>AI Vector Creator</td>
+            <td>CITA AI Illustrator Certificate</td>
+            <td>Design logos with Illustrator and MidJourney AI (lab access)</td>
+            <td class="reward">₹3,500</td>
+            <td class="you-are-now">A vector pro for branding!</td>
+            <td class="optional">LinkedIn Learning Illustrator Essentials - <a href="https://www.linkedin.com/learning/adobe-illustrator-essentials-training">LinkedIn</a></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>AI Layout Designer</td>
+            <td>CITA AI Layout Certificate</td>
+            <td>Create layouts with Photoshop and Canva AI templates (lab access)</td>
+            <td class="reward">₹4,500</td>
+            <td class="you-are-now">A layout expert for print and digital!</td>
+            <td class="optional">Alison Graphic Design Course - <a href="https://alison.com/course/graphic-design">Alison</a></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>AI Campaign Designer</td>
+            <td>CITA AI Campaign Design Certificate</td>
+            <td>Design ad campaigns with Illustrator and Firefly AI (lab access)</td>
+            <td class="reward">₹5,500</td>
+            <td class="you-are-now">A campaign pro with AI visuals!</td>
+            <td class="optional">Skillshare Graphic Design for Ads - <a href="https://www.skillshare.com/classes/graphic-design-for-advertising">Skillshare</a></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>AI Graphic Master</td>
+            <td>CITA AI Graphic Design Mastery Certificate</td>
+            <td>Build a graphic design portfolio with Photoshop/Illustrator (lab or student license)</td>
+            <td class="reward">1st ₹10,000, 2nd ₹5,000, 3rd ₹3,000</td>
+            <td class="you-are-now">A job-ready graphic designer with an AI portfolio!</td>
+            <td class="optional">NPTEL Graphic Design Certificate - <a href="https://onlinecourses.nptel.ac.in/noc24_de03/preview">NPTEL</a></td>
+        </tr>
+    </table>
+
+    <!-- UI/UX Syllabus -->
+    <table id="uiux" class="schedule-table">
+        <tr>
+            <th>Week</th>
+            <th>Identity</th>
+            <th>CITA Certificate</th>
+            <th>Focus Area</th>
+            <th>Reward</th>
+            <th>You Are Now</th>
+            <th>Optional Certification & Link</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>AI Wireframe Creator</td>
+            <td>CITA AI Wireframe Certificate</td>
+            <td>Create wireframes with Balsamiq and Uizard AI (free)</td>
+            <td class="reward">₹1,500</td>
+            <td class="you-are-now">A beginner UI designer with AI wireframes!</td>
+            <td class="optional">Coursera UX Design Basics - <a href="https://www.coursera.org/learn/ux-design-fundamentals">Coursera</a></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>AI UI Designer</td>
+            <td>CITA AI UI Design Certificate</td>
+            <td>Design UI layouts with Figma and Attention Insight AI (free)</td>
+            <td class="reward">₹2,500</td>
+            <td class="you-are-now">A UI designer with AI-optimized layouts!</td>
+            <td class="optional">Google UX Design Certificate - <a href="https://www.coursera.org/professional-certificates/google-ux-design">Coursera</a></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>AI Prototype Builder</td>
+            <td>CITA AI Prototyping Certificate</td>
+            <td>Build prototypes with Adobe XD and Uizard AI (lab access)</td>
+            <td class="reward">₹3,500</td>
+            <td class="you-are-now">A prototyping pro with AI tools!</td>
+            <td class="optional">Designlab UX Academy Foundations - <a href="https://designlab.com/ux-academy-foundations/">Designlab</a></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>AI UX Tester</td>
+            <td>CITA AI UX Testing Certificate</td>
+            <td>Test prototypes with FitJam AI analytics (lab access)</td>
+            <td class="reward">₹4,500</td>
+            <td class="you-are-now">A UX tester with AI-driven insights!</td>
+            <td class="optional">Interaction Design Foundation UX Course - <a href="https://www.interaction-design.org/courses">IDF</a></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>AI Interface Optimizer</td>
+            <td>CITA AI Interface Optimization Certificate</td>
+            <td>Optimize interfaces with Figma and XD AI plugins (lab access)</td>
+            <td class="reward">₹5,500</td>
+            <td class="you-are-now">An interface expert with AI enhancements!</td>
+            <td class="optional">Udemy UX Design Masterclass - <a href="https://www.udemy.com/course/complete-ux-design-course/">Udemy</a></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>AI UX Master</td>
+            <td>CITA AI UI/UX Mastery Certificate</td>
+            <td>Build a UI/UX portfolio with Figma/XD (lab or student license)</td>
+            <td class="reward">1st ₹10,000, 2nd ₹5,000, 3rd ₹3,000</td>
+            <td class="you-are-now">A job-ready UI/UX designer with an AI portfolio!</td>
+            <td class="optional">NPTEL UX Design Certificate - <a href="https://onlinecourses.nptel.ac.in/noc24_de01/preview">NPTEL</a></td>
+        </tr>
+    </table>
+
+    <!-- Video Editing Syllabus -->
+    <table id="video" class="schedule-table">
+        <tr>
+            <th>Week</th>
+            <th>Identity</th>
+            <th>CITA Certificate</th>
+            <th>Focus Area</th>
+            <th>Reward</th>
+            <th>You Are Now</th>
+            <th>Optional Certification & Link</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>AI Video Starter</td>
+            <td>CITA AI Video Basics Certificate</td>
+            <td>Create short videos with RunwayML AI (free tier)</td>
+            <td class="reward">₹1,500</td>
+            <td class="you-are-now">A beginner video editor with AI tools!</td>
+            <td class="optional">Coursera Video Editing Basics - <a href="https://www.coursera.org/learn/video-editing">Coursera</a></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>AI Clip Editor</td>
+            <td>CITA AI Premiere Pro Certificate</td>
+            <td>Edit clips with Premiere Pro and Auto Reframe AI (lab access)</td>
+            <td class="reward">₹2,500</td>
+            <td class="you-are-now">A clip editor with AI automation!</td>
+            <td class="optional">Udemy Premiere Pro Masterclass - <a href="https://www.udemy.com/course/adobe-premiere-pro-cc-masterclass/">Udemy</a></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>AI Effect Creator</td>
+            <td>CITA AI Effects Certificate</td>
+            <td>Add effects with RunwayML and After Effects AI (lab access)</td>
+            <td class="reward">₹3,500</td>
+            <td class="you-are-now">An effects pro with AI enhancements!</td>
+            <td class="optional">LinkedIn Learning After Effects Essentials - <a href="https://www.linkedin.com/learning/after-effects-essentials">LinkedIn</a></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>AI Audio Editor</td>
+            <td>CITA AI Audio Editing Certificate</td>
+            <td>Edit audio with Descript AI text-based editing (lab access)</td>
+            <td class="reward">₹4,500</td>
+            <td class="you-are-now">An audio-video pro with AI tools!</td>
+            <td class="optional">Skillshare Video Audio Editing - <a href="https://www.skillshare.com/classes/video-audio-editing">Skillshare</a></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>AI Campaign Editor</td>
+            <td>CITA AI Campaign Video Certificate</td>
+            <td>Create ad videos with Premiere Pro and RunwayML (lab access)</td>
+            <td class="reward">₹5,500</td>
+            <td class="you-are-now">A campaign editor with AI content!</td>
+            <td class="optional">Alison Video Editing Course - <a href="https://alison.com/course/video-editing">Alison</a></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>AI Video Master</td>
+            <td>CITA AI Video Editing Mastery Certificate</td>
+            <td>Build a video editing portfolio with Premiere Pro (lab or student license)</td>
+            <td class="reward">1st ₹10,000, 2nd ₹5,000, 3rd ₹3,000</td>
+            <td class="you-are-now">A job-ready video editor with an AI portfolio!</td>
+            <td class="optional">NPTEL Video Editing Certificate - <a href="https://onlinecourses.nptel.ac.in/noc24_de04/preview">NPTEL</a></td>
+        </tr>
+    </table>
+
+    <!-- Motion Graphics Syllabus -->
+    <table id="motion" class="schedule-table">
+        <tr>
+            <th>Week</th>
+            <th>Identity</th>
+            <th>CITA Certificate</th>
+            <th>Focus Area</th>
+            <th>Reward</th>
+            <th>You Are Now</th>
+            <th>Optional Certification & Link</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>AI Motion Starter</td>
+            <td>CITA AI Motion Basics Certificate</td>
+            <td>Create simple animations with RunwayML AI (free tier)</td>
+            <td class="reward">₹1,500</td>
+            <td class="you-are-now">A beginner motion designer with AI tools!</td>
+            <td class="optional">Coursera Motion Graphics Basics - <a href="https://www.coursera.org/learn/motion-graphics">Coursera</a></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>AI Storyboard Artist</td>
+            <td>CITA AI Storyboarding Certificate</td>
+            <td>Design storyboards with Procreate and AI brushes (lab access)</td>
+            <td class="reward">₹2,500</td>
+            <td class="you-are-now">A storyboard pro with AI creativity!</td>
+            <td class="optional">Skillshare Storyboarding Course - <a href="https://www.skillshare.com/classes/storyboarding-for-animation">Skillshare</a></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>AI Animation Creator</td>
+            <td>CITA AI Animation Certificate</td>
+            <td>Create animations with After Effects and Content-Aware Fill AI (lab access)</td>
+            <td class="reward">₹3,500</td>
+            <td class="you-are-now">An animation pro with AI effects!</td>
+            <td class="optional">LinkedIn Learning After Effects Animation - <a href="https://www.linkedin.com/learning/after-effects-animation">LinkedIn</a></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>AI Template Designer</td>
+            <td>CITA AI Template Certificate</td>
+            <td>Design motion templates with Invento AI (lab access)</td>
+            <td class="reward">₹4,500</td>
+            <td class="you-are-now">A template expert for dynamic visuals!</td>
+            <td class="optional">Udemy Motion Graphics Masterclass - <a href="https://www.udemy.com/course/motion-graphics-with-after-effects/">Udemy</a></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>AI Ad Animator</td>
+            <td>CITA AI Ad Animation Certificate</td>
+            <td>Create ad animations with After Effects and RunwayML (lab access)</td>
+            <td class="reward">₹5,500</td>
+            <td class="you-are-now">An ad animation pro with AI content!</td>
+            <td class="optional">Alison Motion Graphics Course - <a href="https://alison.com/course/motion-graphics">Alison</a></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>AI Motion Master</td>
+            <td>CITA AI Motion Graphics Mastery Certificate</td>
+            <td>Build a motion graphics portfolio with After Effects (lab or student license)</td>
+            <td class="reward">1st ₹10,000, 2nd ₹5,000, 3rd ₹3,000</td>
+            <td class="you-are-now">A job-ready motion designer with an AI portfolio!</td>
+            <td class="optional">NPTEL Motion Graphics Certificate - <a href="https://onlinecourses.nptel.ac.in/noc24_de02/preview">NPTEL</a></td>
+        </tr>
+    </table>
+
+    <div class="popup" id="enrollPopup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">×</span>
+            <h2>Enroll in CITA AI-Powered Courses</h2>
+            <form id="enrollForm">
+                <label>Name: <input type="text" name="name" required></label><br>
+                <label>Email: <input type="email" name="email" required></label><br>
+                <label>Course: <select name="course" id="courseSelect">
+                    <option value="graphic">AI-Powered Graphic Designing Mastery</option>
+                    <option value="uiux">AI-Powered UI/UX Mastery</option>
+                    <option value="video">AI-Powered Video Editing Mastery</option>
+                    <option value="motion">AI-Powered Motion Graphics Mastery</option>
+                </select></label><br>
+                <label>Preferred Tool: <select name="tool">
+                    <option>Adobe Creative Cloud</option>
+                    <option>Figma</option>
+                    <option>RunwayML</option>
+                    <option>Canva AI</option>
+                </select></label><br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function filterSyllabus(course) {
+            const tables = document.querySelectorAll('.schedule-table');
+            tables.forEach(table => {
+                table.classList.remove('active');
+                if (table.id === course) {
+                    table.classList.add('active');
+                }
+            });
+            // Update pop-up form course selection
+            const courseSelect = document.getElementById('courseSelect');
+            courseSelect.value = course;
+        }
+
+        function showPopup() {
+            document.getElementById('enrollPopup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('enrollPopup').style.display = 'none';
+        }
+
+        document.getElementById('enrollForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Enrollment submitted!');
+            closePopup();
+        });
+
+        // Show Graphic Designing syllabus by default
+        filterSyllabus('graphic');
+    </script>
+</body>
+</html>
