@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CITA AI-Powered Business Analyst Week 1 Timeline</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f4f7fa;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #ff6f61;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: #0288d1;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background: inherit;
+            width: 50%;
+            margin-bottom: 20px;
+        }
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff6f61;
+            border-radius: 50%;
+            top: 20px;
+            z-index: 1;
+        }
+        .timeline-item:nth-child(odd)::before {
+            right: -10px;
+        }
+        .timeline-item:nth-child(even)::before {
+            left: -10px;
+        }
+        .timeline-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .timeline-content:hover {
+            transform: scale(1.05);
+        }
+        .timeline-content h2 {
+            color: #0288d1;
+            font-size: 1.6em;
+            margin-bottom: 10px;
+        }
+        .segment {
+            margin: 10px 0;
+            padding: 10px;
+            background: #e1f5fe;
+            border-radius: 5px;
+        }
+        .segment h3 {
+            color: #ff6f61;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .segment-details {
+            display: none;
+        }
+        .segment-details.active {
+            display: block;
+        }
+        .anti-scam-badge {
+            margin: 30px auto;
+        }
+        .enroll-btn {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 12px 25px;
+            background: #ff6f61;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        @media (max-width: 600px) {
+            .timeline::before {
+                left: 30px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+                text-align: left;
+            }
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            .timeline-item::before {
+                left: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>CITA AI-Powered Business Analyst Mastery: Week 1 Timeline</h1>
+    <div class="anti-scam-badge">
+        <img src="cita_anti_scam_badge.png" alt="CITA Anti-Scam Commitment" width="100">
+        <p>Accredited by NSDC & ISO 9001:2015</p>
+    </div>
+    <a href="#" class="enroll-btn" onclick="showPopup()">Enroll Now</a>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h2>Day 1: Why Business Analysis Matters</h2>
+                <div class="segment">
+                    <h3>Warm-Up (5 mins): Inspiration</h3>
+                    <div class="segment-details">
+                        <p>Story: “How a Chennai BA at Cognizant saved a project.” Icebreaker: “Share one IT job you dream of!”</p>
+                    </div>
+                </div>
+                <div class="segment">
+                    <h3>Teaching (15 mins): Curiosity</h3>
+                    <div class="segment-details">
+                        <p>Explain BA’s role with a Chennai bus app case. Demo ChatGPT generating questions. Visual: Infographic on BA’s Tamil Nadu impact.</p>
+                    </div>
+                </div>
+                <div class="segment">
+                    <h3>Exercise (20 mins): Empowerment</h3>
+                    <div class="segment-details">
+                        <p>Draft 3 client questions in ChatGPT for a food delivery app. Notion AI template. Instructor shares 1–2 responses.</p>
+                    </div>
+                </div>
+                <div class="segment">
+                    <h3>Interactive (10 mins): Connection</h3>
+                    <div class="segment-details">
+                        <p>Discuss: “How can BAs help Tamil Nadu startups?” Poll: “Which BA skill excites you?”</p>
+                    </div>
+                </div>
+                <div class="segment">
+                    <h3>Wrap-Up (10 mins): Reassurance</h3>
+                    <div class="segment-details">
+                        <p>FAQs (e.g., “Is BA for non-techies?”). Reflect in Notion AI. Close: “You’re on the BA path!” with CITA badge.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h2>Day 2: Mapping Stakeholders</h2>
+                <div class="segment">
+                    <h3>Warm-Up (5 mins): Inspiration</h3>
+                    <div class="segment-details">
+                        <p>Story: “A Chennai BA’s stakeholder map saved a deadline.” Icebreaker: “Name one bus app influencer.”</p>
+                    </div>
+                </div>
+                <div class="segment">
+                    <h3>Teaching (15 mins): Curiosity</h3>
+                    <div class="segment-details">
+                        <p>Explain stakeholders with an e-commerce app. Demo Notion AI listing stakeholders. Visual: Stakeholder matrix in Google Sheets.</p>
+                    </div>
+                </div>
+                <div class="segment">
+                    <h3>Exercise (20 mins): Empowerment</h3>
+                    <div class="segment-details">
+                        <p>List 5 stakeholders for a Chennai health app in Notion AI. Google Sheet template. Share 1–2 matrices.</p>
+                    </div>
+                </div>
+                <div class="segment">
+                    <h3>Interactive (10 mins): Connection</h3>
+                    <div class="segment-details">
+                        <p>Pair debate: “Who’s the top stakeholder?” Share insights with class.</p>
+                    </div>
+                </div>
+                <div class="segment">
+                    <h3>Wrap-Up (10 mins): Reassurance</h3>
+                    <div class="segment-details">
+                        <p>FAQs (e.g., “Missed a stakeholder?”). Reflect in Notion AI. Close: “You’re building project foundations!”</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h2>Day 3: Asking the Right Questions</h2>
+                <div class="segment">
+                    <h3>Warm-Up (5 mins): Inspiration</h3>
+                    <div class="segment-details">
+                        <p>Story: “A Chennai BA uncovered client needs with questions.” Icebreaker: “One question for a bus app user?”</p>
+                    </div>
+                </div>
+                <div class="segment">
+                    <h3>Teaching (15 mins): Curiosity</h3>
+                    <div class="segment-details">
+                        <p>Cover elicitation with a retail app. Demo ChatGPT drafting questions. Visual: Elicitation diagram.</p>
+                    </div>
+                </div>
+                <div class="segment">
+                    <h3>Exercise (20 mins): Empowerment</h3>
+                    <div class="segment-details">
+                        <p>Create 5 questions for a grocery app in ChatGPT. Notion AI template. Instructor praises 1–2 sets.</p>
+                    </div>
+                </div>
+                <div class="segment">
+                    <h3>Interactive (10 mins): Connection</h3>
+                    <div class="segment-details">
+                        <p>Role-play: BA vs. client asking questions. Class votes on best question.</p>
+                    </div>
+                </div>
+                <div class="segment">
+                    <h3>Wrap-Up (10 mins): Reassurance</h3>
+                    <div class="segment-details">
+                        <p>FAQs (e.g., “Vague answers?”). Reflect in Notion AI. Close: “You’re mastering question skills!”</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h2>Day 4: Crafting User Stories</h2>
+                <div class="segment">
+                    <h3>Warm-Up (5 mins): Inspiration</h3>
+                    <div class="segment-details">
+                        <p>Story: “A Chennai BA’s stories launched a hit feature.” Icebreaker: “One health app feature you’d love?”</p>
+                    </div>
+                </div>
+                <div class="segment">
+                    <h3>Teaching (15 mins): Curiosity</h3>
+                    <div class="segment-details">
+                        <p>Explain user stories with a bus app. Demo ChatGPT refining a story. Visual: Notion AI template.</p>
+                    </div>
+                </div>
+                <div class="segment">
+                    <h3>Exercise (20 mins): Empowerment</h3>
+                    <div class="segment-details">
+                        <p>Write 3 user stories with ChatGPT feedback. Notion AI template. Share 1–2 stories.</p>
+                    </div>
+                </div>
+                <div class="segment">
+                    <h3>Interactive (10 mins): Connection</h3>
+                    <div class="segment-details">
+                        <p>Group challenge: Merge stories into a feature list. Present for applause.</p>
+                    </div>
+                </div>
+                <div class="segment">
+                    <h3>Wrap-Up (10 mins): Reassurance</h3>
+                    <div class="segment-details">
+                        <p>FAQs (e.g., “Story detail level?”). Reflect in Notion AI. Close: “You’re driving IT projects!”</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h2>Day 5: Presenting Your Work</h2>
+                <div class="segment">
+                    <h3>Warm-Up (5 mins): Inspiration</h3>
+                    <div class="segment-details">
+                        <p>Story: “A Chennai BA’s presentation won client trust.” Icebreaker: “One thing you’re proud of?”</p>
+                    </div>
+                </div>
+                <div class="segment">
+                    <h3>Teaching (15 mins): Curiosity</h3>
+                    <div class="segment-details">
+                        <p>Cover requirements review with a startup example. Demo Notion AI summarizing requirements. Visual: Notion AI slide.</p>
+                    </div>
+                </div>
+                <div class="segment">
+                    <h3>Exercise (20 mins): Empowerment</h3>
+                    <div class="segment-details">
+                        <p>Compile Week 1 work into a Notion AI document. Template provided. Instructor reviews 1–2 documents.</p>
+                    </div>
+                </div>
+                <div class="segment">
+                    <h3>Interactive (10 mins): Connection</h3>
+                    <div class="segment-details">
+                        <p>Mini-presentation: Share 1 user story (30 seconds). Class applauds.</p>
+                    </div>
+                </div>
+                <div class="segment">
+                    <h3>Wrap-Up (10 mins): Reassurance</h3>
+                    <div class="segment-details">
+                        <p>FAQs (e.g., “Present confidently?”). Award CITA Certificate and ₹1,500. Reflect in Notion AI. Close: “You’re a certified AI Requirements Analyst!”</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="enrollPopup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">×</span>
+            <h2>Enroll in CITA AI-Powered Business Analyst Mastery</h2>
+            <form id="enrollForm">
+                <label>Name: <input type="text" name="name" required></label><br>
+                <label>Email: <input type="email" name="email" required></label><br>
+                <label>Course: <select name="course">
+                    <option>AI-Powered Business Analyst Mastery</option>
+                </select></label><br>
+                <label>Preferred Tool: <select name="tool">
+                    <option>ChatGPT</option>
+                    <option>Notion AI</option>
+                    <option>Power BI</option>
+                    <option>Tableau</option>
+                </select></label><br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const contents = document.querySelectorAll('.timeline-content');
+        contents.forEach(content => {
+            content.addEventListener('click', () => {
+                const details = content.querySelectorAll('.segment-details');
+                details.forEach(detail => detail.classList.toggle('active'));
+            });
+        });
+
+        function showPopup() {
+            document.getElementById('enrollPopup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('enrollPopup').style.display = 'none';
+        }
+
+        document.getElementById('enrollForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Enrollment submitted! We’ll contact you via WhatsApp.');
+            closePopup();
+        });
+    </script>
+</body>
+</html>
