@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traders Eden Pvt Ltd - Redefining Wealth Creation</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Chart.js for interactive charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <!-- Fallback for Chart.js (simulated; replace with actual local path if needed) -->
+    <!-- <script>window.Chart || document.write('<script src="path/to/local/chart.min.js"><\/script>')</script> -->
+    <!-- Typed.js for animated hero text -->
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <!-- Vanilla Tilt.js for 3D card effects -->
+    <script src="https://unpkg.com/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+    <!-- AOS for scroll animations -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Updated Color Scheme */
+        :root {
+            --blue: #1e3a8a;
+            --blue-light: #60a5fa;
+            --green: #15803d;
+            --yellow: #fbbf24;
+            --gold: #D4AF37;
+            --dark-gray: #1f2937;
+            --white: #FFFFFF;
+            --light-gray: #f9fafb;
+        }
+        /* Base Styles */
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            background-color: var(--light-gray);
+            transition: background-color 0.3s, color 0.3s;
+            color: var(--dark-gray);
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        nav {
+            background: linear-gradient(to right, var(--blue), var(--blue-light));
+            color: var(--white);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 10px 18px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s, background-color 0.3s;
+        }
+        nav a:hover {
+            color: var(--gold);
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+        .parallax {
+            background: url('https://via.placeholder.com/1200x400.png?text=Free+Trading+Session+Banner') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .parallax::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(30, 58, 138, 0.7);
+            z-index: 1;
+        }
+        .parallax > * {
+            position: relative;
+            z-index: 2;
+        }
+        .ticker-container {
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+            background: linear-gradient(to right, var(--blue), var(--blue-light));
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .ticker {
+            display: inline-block;
+            animation: ticker 25s linear infinite;
+        }
+        .ticker span {
+            margin: 0 20px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+        .ticker span:hover {
+            transform: scale(1.15);
+        }
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .dark-mode {
+            background-color: #111827;
+            color: #e5e7eb;
+        }
+        .dark-mode .bg-white { background-color: #1f2937; }
+        .dark-mode .bg-gray-100 { background-color: #374151; }
+        .dark-mode .text-gray-700 { color: #d1d5db; }
+        .dark-mode .text-blue-900 { color: var(--blue-light); }
+        .dark-mode .bg-blue-900 { background-color: var(--blue); }
+        .bg-white { background-color: var(--white); }
+        .bg-gray-100 { background-color: #f1f5f9; }
+        .text-gray-700 { color: var(--dark-gray); }
+        .text-blue-900 { color: var(--blue); }
+        .bg-yellow-500 { background-color: var(--yellow); }
+        .bg-green-600 { background-color: var(--green); }
+        .text-black { color: #000; }
+        .text-gold { color: var(--gold); }
+        .hover\:bg-yellow-600:hover { background-color: #f59e0b; }
+        .hover\:bg-green-700:hover { background-color: #166534; }
+        .hover\:shadow-xl:hover { box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); }
+        .hover\:bg-white:hover { background-color: var(--white); }
+        .hover\:text-blue-900:hover { color: var(--blue); }
+        .text-lg { font-size: 1.125rem; }
+        .text-xl { font-size: 1.25rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-4xl { font-size: 2.25rem; }
+        .text-5xl { font-size: 3rem; }
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        .rounded-lg { border-radius: 12px; }
+        .shadow-lg { box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); }
+        .p-4 { padding: 16px; }
+        .p-6 { padding: 24px; }
+        .p-8 { padding: 32px; }
+        .py-24 { padding-top: 96px; padding-bottom: 96px; }
+        .mb-4 { margin-bottom: 16px; }
+        .mb-6 { margin-bottom: 24px; }
+        .mb-8 { margin-bottom: 32px; }
+        .mb-12 { margin-bottom: 48px; }
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .space-x-6 > * + * { margin-left: 24px; }
+        .gap-8 { gap: 32px; }
+        .grid { display: grid; }
+        .grid-cols-1 { grid-template-columns: 1fr; }
+        .text-center { text-align: center; }
+        .italic { font-style: italic; }
+        .list-disc { list-style-type: disc; }
+        .list-inside { padding-left: 16px; }
+        .max-w-2xl { max-width: 672px; }
+        .max-w-3xl { max-width: 768px; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .bg-gradient-blue {
+            background: linear-gradient(to bottom, var(--blue), var(--blue-light));
+        }
+        .banner-section {
+            background: url('https://via.placeholder.com/1200x400.png?text=Free+Trading+Session+Banner') no-repeat center center;
+            background-size: cover;
+            padding: 60px 0;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            border-radius: 12px;
+            margin: 40px 0;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .banner-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(30, 58, 138, 0.5);
+            border-radius: 12px;
+            z-index: 1;
+        }
+        .banner-section > * {
+            position: relative;
+            z-index: 2;
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+        .chart-error {
+            color: var(--dark-gray);
+            text-align: center;
+            font-style: italic;
+            margin-top: 10px;
+        }
+        .hidden { display: none; }
+        @media (min-width: 768px) {
+            .md\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+            .md\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+            .md\:flex-row { flex-direction: row; }
+            .md\:w-1\/2 { width: 50%; }
+            .md\:w-1\/3 { width: 33.333%; }
+        }
+        @media (max-width: 767px) {
+            .sm\:w-full { width: 100%; }
+            .sm\:mb-8 { margin-bottom: 32px; }
+            .chart-container { height: 250px; }
+        }
+        .transition { transition: all 0.3s; }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="container flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://via.placeholder.com/40x40.png?text=TE" alt="Traders Eden Logo" class="mr-4" style="width: 40px; height: 40px;">
+                <h1 class="text-3xl font-bold"></h1>
+            </div>
+            <div class="flex items-center space-x-6">
+                <ul class="flex space-x-6">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#event">Event</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#market-watch">Market Watch</a></li>
+                    <li><a href="#insights">Insights</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button id="darkModeToggle" class="p-2 rounded-full hover:bg-blue-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section with Banner -->
+    <section id="home" class="parallax">
+        <div class="container text-center" data-aos="fade-up">
+            <img src="https://via.placeholder.com/150x150.png?text=Traders+Eden+Logo" alt="Traders Eden Logo" class="mb-6 mx-auto" style="width: 150px; height: 150px;">
+            <h2 class="text-5xl font-bold mb-6 text-white">Empowering Your Financial Future</h2>
+            <p class="text-2xl mb-8 max-w-3xl mx-auto text-white">
+                As an <span id="typed-text" class="text-gold"></span> with <em>Angel One</em>, we deliver cutting-edge investment, trading, and advisory solutions.
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="#contact" class="bg-green-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-green-700 transition">Start Your Wealth Journey</a>
+                <a href="#login" class="bg-transparent border border-gold px-8 py-4 rounded-full text-lg font-semibold text-gold hover:bg-white hover:text-blue-900 transition">Client Portal</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Banner Section -->
+    <section id="event" class="banner-section" data-aos="zoom-in">
+        <div class="container">
+            <h2 class="text-4xl font-bold mb-6">Free Trading Session - June 7th & 8th</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Join our exclusive free trading sessions on June 7th and 8th to learn expert strategies from our founders and master the art of trading with <em>Angel One</em>’s tools.
+            </p>
+            <a href="#contact" class="bg-green-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:bg-green-700 transition">Register Now!</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white" data-aos="fade-up">
+        <div class="container">
+            <h2 class="text-4xl font-bold text-center mb-12 text-blue-900">About Traders Eden Pvt Ltd</h2>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-900">Our Story</h3>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Founded by <em>Mr. Iniyavan M</em> and <em>Mr. Thiruvarasan S</em>, <em>Traders Eden Pvt Ltd</em> is a premier sub-broker of <em>Angel One</em>, India’s leading stock broking platform. Starting their trading journey at age 17, our founders bring over 6 years of expertise in navigating complex financial markets. We combine <em>Angel One</em>’s state-of-the-art technology, including the ARQ smart investment engine, with our deep market insights to craft personalized wealth creation strategies.
+                    </p>
+                </div>
+                <div class="md:w-1/2 bg-gradient-blue text-white p-8 rounded-lg shadow-lg" data-aos="zoom-in">
+                    <h3 class="text-2xl font-semibold mb-6">Why Choose Us</h3>
+                    <ul class="list-disc list-inside text-lg space-y-2">
+                        <li>Authorized <em>Angel One</em> sub-broker with advanced tools</li>
+                        <li>6+ years of trading expertise</li>
+                        <li>Customized investment strategies</li>
+                        <li>Access to equities, derivatives, and more</li>
+                        <li>24/7 client support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-gray-100" data-aos="fade-up">
+        <div class="container">
+            <h2 class="text-4xl font-bold text-center mb-12 text-blue-900">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-900">Investment Solutions</h3>
+                    <p class="text-gray-700">Build wealth with diversified portfolios in stocks, mutual funds, bonds, and ETFs, tailored to your financial goals and risk profile.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-900">Trading Services</h3>
+                    <p class="text-gray-700">Trade equities, derivatives, commodities, and forex with real-time data and analytics via <em>Angel One</em>’s advanced platforms.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-900">Investment Advisory</h3>
+                    <p class="text-gray-700">Leverage <em>Angel One</em>’s ARQ tool and our expert insights for data-driven advisory services to optimize your investments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Watch Section -->
+    <section id="market-watch" class="py-24 bg-blue-900 text-white" data-aos="fade-up">
+        <div class="container">
+            <h2 class="text-4xl font-bold text-center mb-12">Live Market Watch</h2>
+            <div class="ticker-container">
+                <div class="ticker" id="ticker">
+                    <span class="mx-4" id="stock1">RELIANCE: ₹2,950.25 <span class="text-green-400">+1.2%</span></span>
+                    <span class="mx-4" id="stock2">TCS: ₹4,120.50 <span class="text-green-400">+0.8%</span></span>
+                    <span class="mx-4" id="stock3">HDFCBANK: ₹1,650.75 <span class="text-red-400">-0.3%</span></span>
+                    <span class="mx-4" id="stock4">INFY: ₹1,780.90 <span class="text-green-400">+1.5%</span></span>
+                    <span class="mx-4" id="stock5">SBIN: ₹820.30 <span class="text-green-400">+0.5%</span></span>
+                </div>
+            </div>
+            <p class="text-center mt-4 text-sm">*Sample data for illustration. Real-time data available via <em>Angel One</em> platforms.</p>
+        </div>
+    </section>
+
+    <!-- Market Insights (Charts) Section -->
+    <section id="insights" class="py-24 bg-white" data-aos="fade-up">
+        <div class="container">
+            <h2 class="text-4xl font-bold text-center mb-12 text-blue-900">Market Insights</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="sm:w-full md:w-1/3 bg-gray-100 p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-6 text-blue-900">NIFTY 50 Performance</h3>
+                    <div class="chart-container">
+                        <canvas id="niftyChart"></canvas>
+                    </div>
+                    <p id="niftyChartError" class="chart-error hidden">Unable to load chart. Please check your connection or refresh the page.</p>
+                </div>
+                <div class="sm:w-full md:w-1/3 bg-gray-100 p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-6 text-blue-900">Portfolio Allocation</h3>
+                    <div class="chart-container">
+                        <canvas id="portfolioChart"></canvas>
+                    </div>
+                    <p id="portfolioChartError" class="chart-error hidden">Unable to load chart. Please check your connection or refresh the page.</p>
+                </div>
+                <div class="sm:w-full md:w-1/3 bg-gray-100 p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-6 text-blue-900">NIFTY 50 Monthly Gains</h3>
+                    <div class="chart-container">
+                        <canvas id="niftyMonthlyChart"></canvas>
+                    </div>
+                    <p id="niftyMonthlyChartError" class="chart-error hidden">Unable to load chart. Please check your connection or refresh the page.</p>
+                </div>
+            </div>
+            <div class="mt-12 bg-gray-100 p-8 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold mb-6 text-blue-900 text-center">NIFTY 50 One-Year Performance</h3>
+                <div class="chart-container">
+                    <canvas id="niftyYearlyChart"></canvas>
+                </div>
+                <p id="niftyYearlyChartError" class="chart-error hidden">Unable to load chart. Please check your connection or refresh the page.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-24 bg-gray-100" data-aos="fade-up">
+        <div class="container">
+            <h2 class="text-4xl font-bold text-center mb-12 text-blue-900">Meet Our Visionaries</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
+                    <h3 class="text-2xl font-semibold mb-2 text-blue-900"><em>Mr. Iniyavan M</em></h3>
+                    <p class="text-gray-700 mb-4">Co-Founder & Chief Strategist</p>
+                    <p class="text-gray-700">With 6 years of trading expertise starting at age 17, <em>Mr. Iniyavan M</em> drives innovative strategies, leveraging <em>Angel One</em>’s platforms for client success.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
+                    <h3 class="text-2xl font-semibold mb-2 text-blue-900"><em>Mr. Thiruvarasan S</em></h3>
+                    <p class="text-gray-700 mb-4">Co-Founder & Investment Advisor</p>
+                    <p class="text-gray-700">Starting at 17, <em>Mr. Thiruvarasan S</em> brings 6 years of experience, offering personalized advisory services to maximize client returns.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 bg-white" data-aos="fade-up">
+        <div class="container">
+            <h2 class="text-4xl font-bold text-center mb-12 text-blue-900">Client Success Stories</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
+                    <p class="text-gray-700 italic">"<em>Traders Eden</em>’s expertise and <em>Angel One</em>’s platform transformed my portfolio. Their advice is spot-on!"</p>
+                    <p class="mt-4 font-semibold text-blue-900">Priya S., Investor</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
+                    <p class="text-gray-700 italic">"The team’s market insights and trading tools have consistently delivered results. Highly recommend!"</p>
+                    <p class="mt-4 font-semibold text-blue-900">Arjun K., Trader</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
+                    <p class="text-gray-700 italic">"Personalized service and cutting-edge technology make <em>Traders Eden</em> my go-to for investments."</p>
+                    <p class="mt-4 font-semibold text-blue-900">Meena R., Client</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="parallax bg-gradient-blue">
+        <div class="container text-center" data-aos="fade-up">
+            <h2 class="text-4xl font-bold mb-12 text-white">Let’s Build Your Wealth Together</h2>
+            <p class="text-lg mb-8 max-w-2xl mx-auto text-white">
+                Reach out for expert trading and investment advisory services tailored to your goals.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-8">
+                <div>
+                    <p class="text-lg mb-2 text-white"><strong>Email:</strong> Support@traderseden.in</p>
+                    <p class="text-lg mb-2 text-white"><strong>Phone:</strong> +91-9500261308</p>
+                    <p class="text-lg text-white"><strong>Address:</strong> #40, Ambika nagar, Iyenchery, Urapakkam, Chennai - 603210</p>
+                </div>
+                <div>
+                    <a href="#contact" class="bg-green-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:bg-green-700 transition">Schedule a Consultation Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container text-center">
+            <p class="mb-2">© 2025 Traders Eden Pvt Ltd. All rights reserved.</p>
+            <p class="text-sm">Authorized Sub-Broker of <em>Angel One</em> | SEBI Registered</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // Initialize AOS
+        if (typeof AOS !== 'undefined') {
+            AOS.init({ duration: 1000, once: true });
+        } else {
+            console.warn('AOS library failed to load. Animations will be disabled.');
+        }
+
+        // Typed.js for Hero Section
+        const typedTextElement = document.getElementById('typed-text');
+        if (typedTextElement && typeof Typed !== 'undefined') {
+            new Typed('#typed-text', {
+                strings: ['Authorized Sub-Broker', 'Investment Experts', 'Trading Innovators', 'Wealth Creators'],
+                typeSpeed: 50,
+                backSpeed: 30,
+                loop: true
+            });
+        } else {
+            if (typedTextElement) {
+                typedTextElement.textContent = 'Authorized Sub-Broker';
+            }
+            console.warn('Typed.js failed to load or element not found. Fallback applied.');
+        }
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        if (darkModeToggle) {
+            darkModeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+            });
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+        }
+
+        // Simulate Live Market Watch Updates
+        const stocks = [
+            { id: 'stock1', name: 'RELIANCE', price: 2950.25, change: 1.2 },
+            { id: 'stock2', name: 'TCS', price: 4120.50, change: 0.8 },
+            { id: 'stock3', name: 'HDFCBANK', price: 1650.75, change: -0.3 },
+            { id: 'stock4', name: 'INFY', price: 1780.90, change: 1.5 },
+            { id: 'stock5', name: 'SBIN', price: 820.30, change: 0.5 }
+        ];
+        function updateTicker() {
+            stocks.forEach(stock => {
+                const element = document.getElementById(stock.id);
+                if (element) {
+                    const change = (Math.random() - 0.5) * 2;
+                    stock.price = Math.max(100, (stock.price + change).toFixed(2));
+                    stock.change = change.toFixed(1);
+                    element.innerHTML = `${stock.name}: ₹${stock.price} <span class="${stock.change >= 0 ? 'text-green-400' : 'text-red-400'}">${stock.change >= 0 ? '+' : ''}${stock.change}%</span>`;
+                }
+            });
+        }
+        setInterval(updateTicker, 5000);
+
+        // Initialize Charts with Delay to Ensure DOM is Ready
+        window.addEventListener('load', function () {
+            setTimeout(() => {
+                if (typeof Chart === 'undefined') {
+                    console.error('Chart.js failed to load. Please check your internet connection or the CDN URL.');
+                    document.querySelectorAll('.chart-error').forEach(error => error.classList.remove('hidden'));
+                    return;
+                }
+
+                // NIFTY 50 Performance Chart
+                const niftyCtx = document.getElementById('niftyChart');
+                const niftyChartError = document.getElementById('niftyChartError');
+                if (niftyCtx && niftyChartError) {
+                    try {
+                        new Chart(niftyCtx.getContext('2d'), {
+                            type: 'line',
+                            data: {
+                                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                                datasets: [{
+                                    label: 'NIFTY 50 Index',
+                                    data: [22000, 22500, 22300, 23000, 22800, 23500],
+                                    borderColor: '#1e3a8a',
+                                    backgroundColor: 'rgba(30, 58, 138, 0.2)',
+                                    fill: true,
+                                    tension: 0.4
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    tooltip: { enabled: true },
+                                    legend: { display: true }
+                                },
+                                scales: {
+                                    y: { beginAtZero: false }
+                                }
+                            }
+                        });
+                    } catch (e) {
+                        console.error('Error rendering NIFTY 50 Performance chart:', e);
+                        niftyChartError.classList.remove('hidden');
+                    }
+                }
+
+                // Portfolio Allocation Chart
+                const portfolioCtx = document.getElementById('portfolioChart');
+                const portfolioChartError = document.getElementById('portfolioChartError');
+                if (portfolioCtx && portfolioChartError) {
+                    try {
+                        new Chart(portfolioCtx.getContext('2d'), {
+                            type: 'pie',
+                            data: {
+                                labels: ['Equities', 'Mutual Funds', 'Bonds', 'Commodities'],
+                                datasets: [{
+                                    data: [50, 30, 15, 5],
+                                    backgroundColor: ['#1e3a8a', '#fbbf24', '#60a5fa', '#D4AF37'],
+                                    hoverOffset: 20
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    tooltip: { enabled: true },
+                                    legend: { position: 'bottom' }
+                                }
+                            }
+                        });
+                    } catch (e) {
+                        console.error('Error rendering Portfolio Allocation chart:', e);
+                        portfolioChartError.classList.remove('hidden');
+                    }
+                }
+
+                // NIFTY 50 Monthly Gains Chart
+                const niftyMonthlyCtx = document.getElementById('niftyMonthlyChart');
+                const niftyMonthlyChartError = document.getElementById('niftyMonthlyChartError');
+                if (niftyMonthlyCtx && niftyMonthlyChartError) {
+                    try {
+                        new Chart(niftyMonthlyCtx.getContext('2d'), {
+                            type: 'bar',
+                            data: {
+                                labels: ['Apr-May', 'May-Jun'],
+                                datasets: [{
+                                    label: 'NIFTY 50 Gains (%)',
+                                    data: [3.14, 3.07],
+                                    backgroundColor: ['#15803d', '#60a5fa'],
+                                    borderColor: ['#15803d', '#60a5fa'],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    tooltip: { enabled: true },
+                                    legend: { display: true }
+                                },
+                                scales: {
+                                    y: {
+                                        beginAtZero: true,
+                                        title: { display: true, text: 'Percentage Gain (%)' }
+                                    }
+                                }
+                            }
+                        });
+                    } catch (e) {
+                        console.error('Error rendering NIFTY 50 Monthly Gains chart:', e);
+                        niftyMonthlyChartError.classList.remove('hidden');
+                    }
+                }
+
+                // NIFTY 50 One-Year Performance Chart
+                const niftyYearlyCtx = document.getElementById('niftyYearlyChart');
+                const niftyYearlyChartError = document.getElementById('niftyYearlyChartError');
+                if (niftyYearlyCtx && niftyYearlyChartError) {
+                    try {
+                        new Chart(niftyYearlyCtx.getContext('2d'), {
+                            type: 'line',
+                            data: {
+                                labels: ['Jun 2024', 'Sep 2024', 'Dec 2024', 'Mar 2025', 'Jun 2025'],
+                                datasets: [{
+                                    label: 'NIFTY 50 Index',
+                                    data: [20000, 21000, 21500, 22300, 23500],
+                                    borderColor: '#1e3a8a',
+                                    backgroundColor: 'rgba(30, 58, 138, 0.2)',
+                                    fill: true,
+                                    tension: 0.4
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    tooltip: { enabled: true },
+                                    legend: { display: true }
+                                },
+                                scales: {
+                                    y: { beginAtZero: false }
+                                }
+                            }
+                        });
+                    } catch (e) {
+                        console.error('Error rendering NIFTY 50 One-Year Performance chart:', e);
+                        niftyYearlyChartError.classList.remove('hidden');
+                    }
+                }
+            }, 500); // Slight delay to ensure DOM readiness
+        });
+    </script>
+</body>
+</html>
